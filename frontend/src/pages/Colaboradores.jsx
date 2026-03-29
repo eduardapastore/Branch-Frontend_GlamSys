@@ -287,10 +287,6 @@ const Agendamentos = () => {
                   key={colab.id}
                   className="p-3 bg-transparent border border-gray-600 text-white rounded-md"
                 >
-                  <button className="float-right">
-                    <i className="bi bi-three-dots text-gray-600"></i>
-                  </button>
-
                   <div className="flex justify-between">
                     <div>
                       <p className="text-xs font-semibold text-gray-900">{colab.nome}</p>
@@ -298,15 +294,6 @@ const Agendamentos = () => {
                       <p className="p-1 bg-orange-200 text-orange-600 rounded-md font-normal text-xs">
                         {colab.departamento}
                       </p>
-                    </div>
-
-                    <div className="flex flex-col gap-1">
-                      <button>
-                        <i className="bi bi-person-circle w-8 h-8 bg-slate-950 text-white text-xl rounded-full flex items-center justify-center"></i>
-                      </button>
-                      <button>
-                        <i className="bi bi-chat-left-dots w-8 h-8 text-slate-950 border border-slate-950 text-xl rounded-full flex items-center justify-center"></i>
-                      </button>
                     </div>
                   </div>
                 </div>
