@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { auth } from "../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 const Login = () => {
   const [login, setarlogin] = useState('');
   const [senha, setarsenha] = useState('');
@@ -29,6 +32,18 @@ const Login = () => {
       } else {
         setMensagem('Erro ao conectar com o servidor.');
       }
+    }
+  };
+
+  function Login() {
+  const handleLogin = async (email, password) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log("Usuário logado!", userCredential.user);
+      // Aqui, se o 2FA estiver ativo, o Firebase vai disparar o erro 
+      // 'auth/multi-factor-auth-required' e você mostra a tela do código.
+    } catch (error) {
+      console.error("Erro no login", error.code);
     }
   };
   

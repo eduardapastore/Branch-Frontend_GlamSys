@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from '../../components/Navbar';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 

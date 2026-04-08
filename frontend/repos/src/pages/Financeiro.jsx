@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar'
+import Navbar from '../../components/Navbar';
 import { Toaster, toast } from 'react-hot-toast';
 import {
   LineChart,
@@ -9,7 +9,7 @@ import {
   Tooltip as RechartsTooltip,
   CartesianGrid,
 } from "recharts";
-import Tooltip from '../components/Tooltip';
+import Tooltip from '../../components/Tooltip';
 import axios from "axios";
 
 

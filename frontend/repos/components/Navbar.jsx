@@ -112,7 +112,10 @@ const Navbar = () => {
             <i className="bi bi-inboxes"></i>
             <p>Suporte</p>
           </button>
-        </a>
+      </a>
+      <div className='flex justify-center'>
+        <img src='/src/imgs/GlamSys.svg' width='196px' alt='GlamSys Logo' className='absolute bottom-6 '/>
+      </div>
       </div>
     </nav>
   );
