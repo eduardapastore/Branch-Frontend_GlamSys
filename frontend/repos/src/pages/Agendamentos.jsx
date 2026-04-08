@@ -161,7 +161,7 @@ const Agendamentos = () => {
 
               <div className='space-y-4'>
                 <div>
-                  <label className='block text-xs font-bold text-gray-600 mb-1'>ID DO CLIENTE</label>
+                  <label className='block text-xs font-bold text-gray-600 mb-1'>CLIENTE</label>
                   <input type='text' value={cliente_id} onChange={e => setClienteId(e.target.value)} className="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-amber-500 outline-none" placeholder='Ex: 123' />
                 </div>
 
