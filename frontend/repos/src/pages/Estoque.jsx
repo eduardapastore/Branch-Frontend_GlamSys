@@ -227,7 +227,15 @@ const Estoque = () => {
         {isModalOpen && (
           <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
             <div className="bg-white p-6 rounded-lg w-96 shadow-xl">
-              <h2 className='font-bold mb-4'>Lançar no Estoque</h2>
+              <div className='flex justify-between mb-2'>
+              <h2 className='font-bold'>Cadastrar Produto</h2>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-gray-600 hover:text-gray-800"
+              >
+                <i className="bi bi-x-lg"></i>
+              </button>
+            </div>
               <div className="flex flex-col gap-3">
                 <select value={produto_id} onChange={e => setProdutosId(e.target.value)} className='border p-2 rounded-md text-sm outline-none focus:border-amber-600'>
                   <option value="">Selecione um produto</option>
@@ -236,7 +244,6 @@ const Estoque = () => {
                 <input type="number" placeholder="Quantidade" value={quantidade} onChange={e => setQuantidade(e.target.value)} className="border p-2 rounded-md text-sm" />
                 <input type="text" placeholder="Local (ex: Prateleira A)" value={local} onChange={e => setLocal(e.target.value)} className="border p-2 rounded-md text-sm" />
                 <button onClick={salvarEstoque} className="bg-amber-600 text-white py-2 rounded-md font-bold mt-2">Finalizar Lançamento</button>
-                <button onClick={() => setIsModalOpen(false)} className="text-gray-500 text-sm">Cancelar</button>
               </div>
             </div>
           </div>

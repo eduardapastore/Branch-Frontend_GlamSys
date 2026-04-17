@@ -199,9 +199,6 @@ const Agendamentos = () => {
             </div>
           </div>
         )}
-
-        {/* Modal Novo Cliente e Detalhes seguem a mesma lógica de fechar com false */}
-        {/* ... (restante dos modais ajustados conforme acima) */}
       </div>
     </main>
   );

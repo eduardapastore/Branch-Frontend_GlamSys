@@ -207,14 +207,14 @@ const Financeiro = () => {
 
         <section >
           {/* titulo + botões */}
-          <div className='flex justify-between mb-2'>
-            <h2 className='font-semibold text-lg'>Financeiro</h2>
+          <div className='flex justify-between'>
+            <h2 className='font-bold text-md'>Financeiro</h2>
             <div className='flex gap-2 text-xs'>
               <button className='p-2 rounded-md border border-gray-700 hover:bg-gray-700 hover:text-gray-50'>
                 <i className="bi bi-clipboard2-data"></i>
                 Relatório
               </button>
-              <button className='p-2 rounded-md font-semibold bg-orange-600 text-orange-50 hover:bg-orange-700'
+              <button className='p-2 rounded-md font-semibold bg-amber-600 text-amber-50 hover:bg-amber-700'
                 onClick={() => setIsModalOpen(true)}
               >
                 <i className="bi bi-plus"></i>
@@ -223,8 +223,30 @@ const Financeiro = () => {
             </div>
           </div>
 
+           {/* SALDO DAS CONTAS */}
+          <div className="mt-2 mb-4 bg-transparent rounded-lg w-full">
+            <h3 className="font-semibold mb-2 text-md">Saldo Atual</h3>
+
+            {contas_financeiras.length > 0 ? (
+              contas_financeiras.map((c) => (
+                <div
+                  key={c.id}
+                  className="flex justify-between border-b py-1 text-sm"
+                >
+                  <span>{c.nome}</span>
+                  <span className="font-semibold">
+                    R$ {Number(c.saldo_atual).toFixed(2)}
+                  </span>
+                </div>
+              ))
+            ) : (
+              <p className="text-gray-600">Nenhuma conta carregada</p>
+            )}
+          </div>
+
           {/* gráficos */}
-          <div className='flex justify-center gap-32'>
+          <h3 className="font-bold mb-2 text-md">Dashboard Financeiro</h3>
+          <div className='flex justify-center gap-64'>
             {/* RECEITAS */}
             <div>
               <h3 className='font-bold text-xs'>Receitas</h3>
@@ -254,33 +276,12 @@ const Financeiro = () => {
             </div>
           </div>
 
-          {/* SALDO DAS CONTAS */}
-          <div className="mt-6 p-4 bg-transparent rounded-lg w-full max-w-xl mx-auto">
-            <h3 className="font-bold mb-2 text-sm">Saldo Atual das Contas</h3>
-
-            {contas_financeiras.length > 0 ? (
-              contas_financeiras.map((c) => (
-                <div
-                  key={c.id}
-                  className="flex justify-between border-b py-1 text-sm"
-                >
-                  <span>{c.nome}</span>
-                  <span className="font-semibold">
-                    R$ {Number(c.saldo_atual).toFixed(2)}
-                  </span>
-                </div>
-              ))
-            ) : (
-              <p className="text-gray-600">Nenhuma conta carregada</p>
-            )}
-          </div>
-
         </section>
 
         {/* lista de entradas e saídas */}
         <section >
           <div className='flex gap-2 items-baseline'>
-            <h3 className='font-semibold mb-3'>Últimos Lançamentos</h3>
+            <h3 className='font-bold text-lg mb-3'>Últimos Lançamentos</h3>
             <Tooltip text="Essa lista contém apenas os últimos 10 lançamentos">
               <i className="bi bi-question-circle text-gray-600"></i>
             </Tooltip>
@@ -296,7 +297,7 @@ const Financeiro = () => {
                     ? "bg-green-200 text-green-700"
                     : item.tipo_lancamento_id === 2
                       ? "bg-red-200 text-red-700"
-                      : "bg-orange-200 text-orange-700"; // DESPESAS FIXAS
+                      : "bg-amber-200 text-amber-700"; // DESPESAS FIXAS
 
                 // Definir cor do valor
                 const valorColor =
@@ -304,7 +305,7 @@ const Financeiro = () => {
                     ? "text-green-500"
                     : item.tipo_lancamento_id === 2
                       ? "text-red-500"
-                      : "text-orange-500"; // DESPESAS FIXAS
+                      : "text-amber-500"; // DESPESAS FIXAS
 
                 // Sinal antes do valor
                 const sinal =
@@ -344,12 +345,11 @@ const Financeiro = () => {
 
       {/* MODAL */}
       {/* OBS o modal precisa salvar a data pra a formatação ficar igual a das listas */}
-      {/* Tem como adicionar um trigger pra pegar a data ao salvar? */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-20">
           <div className="bg-white p-6 rounded-lg w-96 shadow-lg relative">
             <div className='flex justify-between mb-2'>
-              <h2>Lançamento Financeiro</h2>
+              <h2 className='font-bold'>Adicionar Lançamento</h2>
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="text-gray-600 hover:text-gray-800"
@@ -358,30 +358,47 @@ const Financeiro = () => {
               </button>
             </div>
 
+            {/* input de título do lançamento */}
+            <label className='block text-xs font-bold text-gray-600 mb-1'>TÍTULO DO LANÇAMENTO</label>
+            <input
+              //DESCRICAO
+              type="text"
+              placeholder="Título do Lançamento"
+              value={descricao}
+              // onChange={e => setDescricao(e.target.value)}
+              className="w-full mb-2 border border-gray-300 rounded-md p-2 text-sm focus:outline-none focus:border-amber-600"
+            />
+
+            <label className='block text-xs font-bold text-gray-600 mb-1'>DESCRIÇÃO DO LANÇAMENTO</label>
             <input
               //DESCRICAO
               type="text"
               placeholder="Descrição do Lançamento"
               value={descricao}
               onChange={e => setDescricao(e.target.value)}
-              className="w-full mb-2 border border-gray-300 rounded-md p-2 text-sm focus:outline-none focus:border-orange-600"
+              className="w-full mb-2 border border-gray-300 rounded-md p-2 text-sm focus:outline-none focus:border-amber-600"
             />
 
             <div className='flex gap-2 w-full mb-2'>
-              <input
-                //VALOR
-                type="text"
-                placeholder="Valor"
-                value={valor}
-                onChange={e => setValor(e.target.value)}
-                className="w-full border border-gray-300 rounded-md p-2 text-sm focus:outline-none focus:border-orange-600"
-              />
+              <div>
+                <label className='block text-xs font-bold text-gray-600 mb-1'>VALOR</label>
+                <input
+                  //VALOR
+                  type="text"
+                  placeholder="Valor"
+                  value={valor}
+                  onChange={e => setValor(e.target.value)}
+                  className="w-full border border-gray-300 rounded-md p-2 text-sm focus:outline-none focus:border-amber-600"
+                />
+              </div>
 
+              <div>
+              <label className='block text-xs font-bold text-gray-600 mb-1'>TIPO</label>
               <select
                 name='tipo_lancamento_id'
                 value={tipo_lancamento_id}
                 onChange={e => setTipoLancamentoId(e.target.value)}
-                className="border w-full border-gray-400 rounded-md p-2 text-xs focus:outline-none focus:border-orange-600"
+                className="w-full border border-gray-300 rounded-md p-2 text-sm focus:outline-none focus:border-amber-600"
                 required
               >
                 <option value="">Selecione a categoria</option>
@@ -396,14 +413,16 @@ const Financeiro = () => {
                 }
 
               </select>
+              </div>
 
             </div>
             <div>
+              <label className='block text-xs font-bold text-gray-600 mb-1'>TIPO DE PAGAMENTO</label>
               <select
                 name='meio_pagamento_id'
                 value={meio_pagamento_id}
                 onChange={e => setMeioPagamentoId(e.target.value)}
-                className="border w-full border-gray-400 rounded-md p-2 text-xs focus:outline-none focus:border-orange-600"
+                className="border w-full border-gray-400 rounded-md mb-2 p-2 text-xs focus:outline-none focus:border-amber-600"
                 required
               >
                 <option value="">Selecione um tipo de pagamento</option>
@@ -419,11 +438,12 @@ const Financeiro = () => {
 
               </select>
 
+              <label className='block text-xs font-bold text-gray-600 mb-1'>CONTA DE ENTRADA</label>
               <select
                 name='conta_financeira_id'
                 value={conta_financeira_id}
                 onChange={e => setContaFinanceiraId(e.target.value)}
-                className="border w-full border-gray-400 rounded-md p-2 text-xs focus:outline-none focus:border-orange-600"
+                className="border w-full border-gray-400 rounded-md mb-2 p-2 text-xs focus:outline-none focus:border-amber-600"
                 required
               >
                 <option value="">Selecione uma conta</option>
@@ -442,7 +462,7 @@ const Financeiro = () => {
             <button
               onClick={salvarLancamentos}
               type="submit"
-              className="w-full bg-orange-600 text-white py-2 rounded-md hover:bg-orange-700"
+              className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-amber-700"
             >
               Salvar
             </button>
