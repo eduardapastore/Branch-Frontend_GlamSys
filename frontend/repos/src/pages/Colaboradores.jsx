@@ -162,7 +162,7 @@ const Colaboradores = () => {
       <Toaster position="top-center" />
 
       <main className='p-6 w-screen h-full'>
-        <h2 className='font-bold mb-4'>Colaboradores</h2>
+        <h2 className='font-bold text-2xl text-gray-800 mb-3'>Colaboradores</h2>
 
         {/* STATUS */}
         <section className='flex gap-4 text-gray-100 mb-4 justify-between items-center'>

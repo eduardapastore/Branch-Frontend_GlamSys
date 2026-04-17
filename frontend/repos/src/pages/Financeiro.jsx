@@ -208,7 +208,7 @@ const Financeiro = () => {
         <section >
           {/* titulo + botões */}
           <div className='flex justify-between'>
-            <h2 className='font-bold text-md'>Financeiro</h2>
+            <h2 className='font-bold text-2xl text-gray-800'>Financeiro</h2>
             <div className='flex gap-2 text-xs'>
               <button className='p-2 rounded-md border border-gray-700 hover:bg-gray-700 hover:text-gray-50'>
                 <i className="bi bi-clipboard2-data"></i>
