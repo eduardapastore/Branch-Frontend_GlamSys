@@ -32,6 +32,8 @@ const clienteRoutes = require('./routes/servico/cliente');
 app.use('/cliente', clienteRoutes);
 const ordensservRoutes = require('./routes/servico/ordens_servico');
 app.use('/ordens_servico', ordensservRoutes);
+const PagcolabRoutes = require('./routes/RH/pagColaboradores');
+app.use('/pagColaboradores', PagcolabRoutes);
 
 
 

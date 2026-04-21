@@ -22,23 +22,27 @@ router.post('/', async (req, res) => {
       email,
       telefone,
       cargo,
-      departamento,
-      salario_base,
-      status
+      data_admissao,
+      vinculo,
+      local_trabalho
     } = req.body;
 
     cpf = cpf.replace(/[.\-]/g, '');
 
     console.log('CPF limpo:', cpf);
 
-    await pool.query(
+    const [result] = await pool.query(
       `INSERT INTO colaboradores 
-       (nome, cpf, email, telefone, cargo, departamento, salario_base, status)
+       (nome, cpf, email, telefone, cargo, data_admissao, vinculo, local_trabalho)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      [nome, cpf, email, telefone, cargo, departamento, salario_base, status]
+      [nome, cpf, email, telefone, cargo, data_admissao, vinculo, local_trabalho]
     );
 
-    res.json({ success: true, message: 'Colaborador inserido com sucesso!' });
+    res.json({ 
+      success: true, 
+      message: 'Colaborador inserido com sucesso!', 
+      id: result.insertId // Adiciona o ID gerado na resposta
+    });
   } catch (error) {
     console.error('Erro ao inserir colaborador:', error);
     res.status(500).json({ error: 'Erro ao inserir colaborador.' });
