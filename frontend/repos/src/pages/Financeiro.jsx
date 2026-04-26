@@ -183,17 +183,45 @@ const Financeiro = () => {
       {/* MODAL SIMPLIFICADO */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50 p-4">
-          <div className="bg-transparent rounded-3xl w-full max-w-md shadow-2xl p-6">
-            <h2 className='font-black text-gray-800 mb-4'>NOVO LANÇAMENTO</h2>
-            <div className='space-y-4'>
-              <input type="text" placeholder="Descrição" value={descricao} onChange={e => setDescricao(e.target.value)} className="w-full bg-gray-50 p-3 rounded-xl outline-none focus:ring-2 focus:ring-amber-500" />
-              <input type="text" placeholder="Valor R$" value={valor} onChange={e => setValor(e.target.value)} className="w-full bg-gray-50 p-3 rounded-xl outline-none focus:ring-2 focus:ring-amber-500" />
-              <select value={tipo_lancamento_id} onChange={e => setTipoLancamentoId(e.target.value)} className="w-full bg-gray-50 p-3 rounded-xl outline-none">
-                <option value="">Tipo</option>
-                {tipo_lancamento.map(t => <option key={t.id} value={t.id}>{t.desc}</option>)}
-              </select>
-              <button onClick={salvarLancamentos} className="w-full bg-amber-600 text-white py-3 rounded-xl font-bold">SALVAR</button>
-              <button onClick={() => setIsModalOpen(false)} className="w-full text-gray-400 text-sm">Cancelar</button>
+          <div className="bg-white rounded-3xl w-full max-w-md shadow-2xl p-6">
+            <div className='flex justify-between p-2 border-b border-gray-300 mb-3'>
+              <h2 className='font-black text-gray-800 mb-2 text-lg'>NOVO LANÇAMENTO</h2>
+              <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-red-500"><i className="bi bi-x-lg"></i></button>
+            </div>
+            <div className=''>
+              {/* TÍTULO DO LANÇAMENTO */}
+              <label className='block text-xs font-bold text-gray-600 mb-1 uppercase'>título do lançamento</label>
+              <input type="text" placeholder="Descrição" value={descricao} onChange={e => setDescricao(e.target.value)} className="w-full border border-gray-300 rounded-lg p-3 text-sm outline-none mb-3"  />
+
+              {/* VALOR DO LANÇAMENTO */}
+              <label className="className='block text-xs font-bold text-gray-600 mb-1 uppercase">valor do lançamento</label>
+              <input type="text" placeholder="Valor R$" value={valor} onChange={e => setValor(e.target.value)} className="w-full border border-gray-300 rounded-lg p-3 text-sm outline-none mb-3" />
+
+              {/* SELECIONAR TIPO */}
+              <div className='flex justify-between gap-2 mb-3'>
+                <div>
+                  <label className="className='block text-xs font-bold text-gray-600 mb-1 uppercase">Tipo de despesa</label>
+                  <select value={tipo_lancamento_id} onChange={e => setTipoLancamentoId(e.target.value)} className="w-full border border-gray-300 rounded-lg p-3 text-sm outline-none">
+                    <option value="">Tipo</option>
+                    {tipo_lancamento.map(t => <option key={t.id} value={t.id}>{t.desc}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="className='block text-xs font-bold text-gray-600 mb-1 uppercase">Conta relacionada</label>
+                  <select value={tipo_lancamento_id} onChange={e => setTipoLancamentoId(e.target.value)} className="w-full border border-gray-300 rounded-lg p-3 text-sm outline-none">
+                    <option value="">Conta Relacionada</option>
+                    {tipo_lancamento.map(t => <option key={t.id} value={t.id}>{t.desc}</option>)}
+                  </select>
+                </div>
+              </div>
+
+              {/* SALVAR */}
+              <div className='pt-4 border-t border-gray-300'>
+                <button onClick={salvarLancamentos} className="w-full flex gap-2 justify-center text-xl bg-green-600 text-white py-3 rounded-md font-bold hover:bg-green-700">
+                  <i className="bi bi-check2-circle"></i>
+                  Salvar
+                </button>
+              </div>
             </div>
           </div>
         </div>

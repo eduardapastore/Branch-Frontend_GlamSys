@@ -538,7 +538,7 @@ const avisarVagaDisponivel = (pessoaEspera) => {
                   </select>
                 </div>
 
-                <button onClick={salvarAgendamento} className='w-full bg-green-600 text-white font-bold py-3 rounded-lg mt-4 hover:bg-green-700 transition-colors flex items-center justify-center gap-2'>
+                <button onClick={salvarAgendamento} className='w-full bg-green-600 text-white text-lg font-bold py-3 rounded-lg mt-4 hover:bg-green-700 transition-colors flex items-center justify-center gap-2'>
                   <i className="bi bi-check2-circle"></i> Confirmar Agendamento
                 </button>
               </div>
