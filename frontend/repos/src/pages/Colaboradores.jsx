@@ -168,7 +168,7 @@ const Colaboradores = () => {
         <section className='flex gap-4 text-gray-100 mb-4 justify-between items-center'>
           <div className='flex gap-2 items-center'>
 
-            <div className='flex gap-4 bg-gray-950 p-3 text-xs rounded-md items-center'>
+            <div className='flex gap-4 bg-gray-950 p-3 text-xs rounded-md items-center shadow-md'>
               <i className="bi bi-people text-xl"></i>
               <div>
                 <p className='font-semibold'>Total de Colaboradores</p>
@@ -176,7 +176,7 @@ const Colaboradores = () => {
               </div>
             </div>
 
-            <div className='flex gap-4 bg-amber-700 p-3 text-xs rounded-md items-center'>
+            <div className='flex gap-4 bg-amber-700 p-3 text-xs rounded-md items-center shadow-md'>
               <i className="bi bi-person-add text-xl"></i>
               <div>
                 <p className='font-semibold'>Colaboradores Contratados</p>
@@ -196,28 +196,6 @@ const Colaboradores = () => {
 
         {/* BUSCA + TOGGLE */}
         <section className='flex justify-between mb-4'>
-          <div className='flex gap-2'>
-
-            <div className='flex p-2 w-80 text-xs rounded-md border border-gray-500 gap-3 items-center'>
-              <i className="bi bi-search"></i>
-              <input
-                type='text'
-                placeholder='Nome do Colaborador'
-                value={busca}
-                onChange={(e) => setBusca(e.target.value)}
-                className='bg-transparent focus:outline-none w-full'
-              />
-            </div>
-
-            <button
-              onClick={buscarColaborador}
-              className='w-10 h-10 bg-amber-600 rounded-md hover:bg-amber-700'
-            >
-              <i className="bi bi-search text-white"></i>
-            </button>
-
-          </div>
-
           {/* TOGGLE GRID/LIST */}
           <div className="flex gap-2">
             <button
@@ -242,6 +220,20 @@ const Colaboradores = () => {
               <i className="bi bi-list"></i>
             </button>
           </div>
+
+          <div className='flex gap-2'>
+            <div className="flex gap-2 items-center">
+              <input 
+                type="text" placeholder=" Pesquisar..." 
+                className="w-64 border p-2 rounded-md text-sm outline-none shadow-sm focus:border-amber-600"
+              />
+              <button
+               onClick={buscarColaborador} 
+               className="p-1 w-8 h-8 items-center font-bold bg-amber-600 rounded-md text-white hover:bg-amber-700 transition-all">
+                <i className="bi bi-search"></i>
+              </button>
+            </div>
+          </div>
         </section>
 
         {/* CONTEÚDO */}
@@ -261,16 +253,16 @@ const Colaboradores = () => {
               <div
                 key={colaborador.id}
                 onClick={() => abrirModal(colaborador)}
-                className={`border rounded-md p-4 bg-amber-50 shadow-md cursor-pointer hover:border-amber-500 hover:text-amber-800  ${
+                className={`border rounded-md p-4 bg-amber-50 shadow-md cursor-pointer hover:border-gray-400  ${
                   viewMode === "LIST" ? "flex items-center gap-4" : ""
                 }`}
               >
                 <div className='flex gap-2'>
                   <img src={colaborador.foto} alt={colaborador.nome} className="w-12 h-12 bg-gray-300 rounded-full" />
                 <div>
-                  <p className="font-semibold text-amber-900">{colaborador.nome}</p>
+                  <p className="font-semibold text-amber-950">{colaborador.nome}</p>
                   <p className="text-xs text-gray-600">{colaborador.idnum}</p>
-                  <p className="text-xs text-amber-100 p-2 rounded-md bg-amber-700 w-max">
+                  <p className="text-xs text-amber-100 p-2 rounded-md bg-amber-600 shadow-md w-max">
                     {colaborador.cargo}
                   </p>
                 </div>
