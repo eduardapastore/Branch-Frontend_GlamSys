@@ -186,12 +186,18 @@ const Colaboradores = () => {
 
           </div>
 
-          <a href='/addcolaborador'>
-            <button className='bg-amber-600 flex gap-2 text-sm font-bold text-white p-3 h-10 rounded-md hover:bg-amber-700 items-center'>
-              <i className="bi bi-plus-circle text-xl"></i>
-              Adicionar Colaborador
+          <div className='flex gap-2'>
+            <button className='text-gray-700 font-semibold p-2 rounded-md border border-gray-700 hover:bg-gray-700 hover:text-gray-50'>
+              <i className="bi bi-clipboard2-data"></i>
+              Relatório
             </button>
-          </a>
+            <a href='/addcolaborador'>
+              <button className='bg-amber-600 flex gap-2 text-sm font-bold text-white p-3 h-10 rounded-md hover:bg-amber-700 items-center'>
+                <i className="bi bi-plus-circle text-xl"></i>
+                Adicionar Colaborador
+              </button>
+            </a>
+          </div>
         </section>
 
         {/* BUSCA + TOGGLE */}
