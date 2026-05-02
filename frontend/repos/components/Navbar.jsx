@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const location = useLocation();
@@ -56,67 +57,91 @@ const Navbar = () => {
           <p>Dashboard</p>
         </Link>
 
-        {/* Dropdown: Agendamentos */}
-        <div className='relative'>
-          <button 
-            onClick={() => handleDropdown('agendamentos')}
-            className={`flex items-center justify-between w-full transition-colors text-lg ${
-              openDropdown === 'agendamentos' || isActive('/agendamentos') ? 'text-black font-bold' : 'text-gray-500 hover:text-black'
-            }`}
-          >
-            <div className='flex items-center gap-6'>
-              <i className="bi bi-calendar-event text-xl"></i>
-              <p>Agendamentos</p>
-            </div>
-            <i className={`bi bi-chevron-${openDropdown === 'agendamentos' ? 'up' : 'down'} text-sm`}></i>
-          </button>
+        <AnimatePresence>
 
-          {openDropdown === 'agendamentos' && (
-            <ul className="mt-2 ml-11 flex flex-col gap-2 border-l-2 border-slate-200 pl-4">
-              <li>
-                <Link to='/agendamentos' className="text-gray-500 flex gap-2 hover:text-black text-base py-1">
-                  <i class="bi bi-calendar-date"></i> Calendário
-                </Link>
-              </li>
-              <li>
-                <Link to='/confirmacoes' className="text-gray-500 flex gap-2 hover:text-black text-base py-1">
-                  <i class="bi bi-calendar-check"></i> Confirmações
-                </Link>
-              </li>
-            </ul>
-          )}
-        </div>
+          {/* Dropdown: Agendamentos */}
+          <div className='relative'>
+            <button 
+              onClick={() => handleDropdown('agendamentos')}
+              className={`flex items-center justify-between w-full transition-colors text-lg ${
+                openDropdown === 'agendamentos' || isActive('/agendamentos') ? 'text-black font-bold' : 'text-gray-500 hover:text-black'
+              }`}
+            >
+              <div className='flex items-center gap-6'>
+                <i className="bi bi-calendar-event text-xl"></i>
+                <p>Agendamentos</p>
+              </div>
+              <i className={`bi bi-chevron-${openDropdown === 'agendamentos' ? 'up' : 'down'} text-sm`}></i>
+            </button>
+
+            {openDropdown === 'agendamentos' && (
+              <motion.ul
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              style={{ overflow: 'hidden' }} 
+              className="ml-11 flex flex-col gap-2 pl-4"
+            >
+              <ul >
+                <li>
+                  <Link to='/agendamentos' className="text-gray-500 flex gap-2 hover:text-black text-base py-1">
+                    <i class="bi bi-calendar-date"></i> Calendário
+                  </Link>
+                </li>
+                <li>
+                  <Link to='/confirmacoes' className="text-gray-500 flex gap-2 hover:text-black text-base py-1">
+                    <i class="bi bi-calendar-check"></i> Confirmações
+                  </Link>
+                </li>
+              </ul>
+            </motion.ul>
+            )}
+          </div>
+        </AnimatePresence>
         
-        {/* Dropdown: Colaboradores */}
-        <div className='relative'>
-          <button 
-            onClick={() => handleDropdown('colaboradores')}
-            className={`flex items-center justify-between w-full transition-colors text-lg ${
-              openDropdown === 'colaboradores' || isActive('/colaboradores') ? 'text-black font-bold' : 'text-gray-500 hover:text-black'
-            }`}
-          >
-            <div className='flex items-center gap-6'>
-              <i className="bi bi-person-badge text-xl"></i>
-              <p>Colaboradores</p>
-            </div>
-            <i className={`bi bi-chevron-${openDropdown === 'colaboradores' ? 'up' : 'down'} text-sm`}></i>
-          </button>
+        <AnimatePresence>
 
-          {openDropdown === 'colaboradores' && (
-            <ul className="mt-2 ml-11 flex flex-col gap-2 border-l-2 border-slate-200 pl-4">
-              <li>
-                <Link to='/colaboradores' className="text-gray-500 flex gap-2 hover:text-black text-base  py-1">
-                  <i className="bi bi-people"></i> Gestão de Equipe
-                </Link>
-              </li>
-              <li>
-                <Link to='/colaboradores/folha' className="text-gray-500 flex gap-2 hover:text-black text-base py-1">
-                  <i className="bi bi-file-earmark-medical"></i> Folha de Pagamento
-                </Link>
-              </li>
-            </ul>
-          )}
-        </div>
+          {/* Dropdown: Colaboradores */}
+          <div className='relative'>
+            <button 
+              onClick={() => handleDropdown('colaboradores')}
+              className={`flex items-center justify-between w-full transition-colors text-lg ${
+                openDropdown === 'colaboradores' || isActive('/colaboradores') ? 'text-black font-bold' : 'text-gray-500 hover:text-black'
+              }`}
+            >
+              <div className='flex items-center gap-6'>
+                <i className="bi bi-person-badge text-xl"></i>
+                <p>Colaboradores</p>
+              </div>
+              <i className={`bi bi-chevron-${openDropdown === 'colaboradores' ? 'up' : 'down'} text-sm`}></i>
+            </button>
+
+            {openDropdown === 'colaboradores' && (
+              <motion.ul
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              style={{ overflow: 'hidden' }} // Garante que o texto não apareça antes da hora
+              className="ml-11 flex flex-col gap-2 border-l-2 border-slate-200 "
+            >
+              <ul className="mt-2 ml-11 flex flex-col gap-2 border-l-2 border-slate-200 pl-4">
+                <li>
+                  <Link to='/colaboradores' className="text-gray-500 flex gap-2 hover:text-black text-base  py-1">
+                    <i className="bi bi-people"></i> Gestão de Equipe
+                  </Link>
+                </li>
+                <li>
+                  <Link to='/colaboradores/folha' className="text-gray-500 flex gap-2 hover:text-black text-base py-1">
+                    <i className="bi bi-file-earmark-medical"></i> Folha de Pagamento
+                  </Link>
+                </li>
+              </ul>
+              </motion.ul>
+            )}
+          </div>
+        </AnimatePresence>
 
         {/* Links Simples (Clientes, Estoque, etc) */}
         {[
