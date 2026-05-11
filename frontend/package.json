@@ -28,6 +28,7 @@
     "react-input-mask": "^2.0.4",
     "react-popup": "^0.11.2",
     "react-router-dom": "^7.9.5",
+    "react-select": "^5.10.2",
     "recharts": "^3.5.0"
   },
   "devDependencies": {

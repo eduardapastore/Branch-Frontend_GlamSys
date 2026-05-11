@@ -199,36 +199,41 @@ const Estoque = () => {
               </button>
             ))}
           </div>
-
-          <div className="flex gap-3 mb-2">
-            <button onClick={() => setisModalEstoque(true)} className='flex items-center gap-2 p-2 px-4 text-xs text-white font-semibold bg-amber-600 rounded-md hover:bg-amber-700 shadow-sm'>
-              <i className="bi bi-plus-lg"></i> Item
-            </button>
-            <button onClick={() => setisModalFornecedor(true)} className='flex items-center gap-2 p-2 px-4 text-xs text-white font-semibold bg-amber-600 rounded-md hover:bg-amber-700 shadow-sm'>
-              <i className="bi bi-person-plus-fill"></i> Fornecedor
-            </button>
-            <button onClick={() => setIsModalProduto(true)} className='flex items-center gap-2 p-2 px-4 text-xs text-white font-semibold bg-amber-600 rounded-md hover:bg-amber-700 shadow-sm'>
-              <i className="bi bi-box-seam"></i> Produto
-            </button>
-          </div>
         </div>
 
         {/* CONTEÚDO CONDICIONAL */}
         <div className="pb-10">
           {aba === "itens" && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-3">
-                {lista1.map((item, i) => <CardItem key={i} item={item} abrirModal={abrirModalEdicao} />)}
+            <div>
+              <div className='flex justify-between mb-2'>
+                <h3 className="text-sm font-bold text-gray-600 uppercase mb-4">Itens em Estoque</h3>
+                <button onClick={() => setisModalEstoque(true)} className='flex items-center gap-2 p-2 px-4 text-xs text-white font-semibold bg-amber-600 rounded-md hover:bg-amber-700 shadow-sm'>
+                  <i className="bi bi-plus-lg"></i> Adicionar item
+                </button>
               </div>
-              <div className="flex flex-col gap-3">
-                {lista2.map((item, i) => <CardItem key={i} item={item} abrirModal={abrirModalEdicao} />)}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-3">
+                  {lista1.map((item, i) => <CardItem key={i} item={item} abrirModal={abrirModalEdicao} />)}
+                </div>
+                <div className="flex flex-col gap-3">
+                  {lista2.map((item, i) => <CardItem key={i} item={item} abrirModal={abrirModalEdicao} />)}
+                </div>
+                {listaParaExibir.length === 0 && <p className="text-gray-400 italic">Nenhum item encontrado.</p>}
               </div>
-              {listaParaExibir.length === 0 && <p className="text-gray-400 italic">Nenhum item encontrado.</p>}
             </div>
           )}
 
           {aba === "fornecedores" && (
-            <div className='bg-amber-50 rounded-md shadow-md border'>
+            <div>
+              <div>
+                <div className='flex justify-between mb-2'>
+                  <h3 className="text-sm font-bold text-gray-600 uppercase mb-4">Fornecedores Contratados</h3>
+                  <button onClick={() => setisModalFornecedor(true)} className='flex items-center gap-2 p-2 px-4 text-xs text-white font-semibold bg-amber-600 rounded-md hover:bg-amber-700 shadow-sm'>
+                    <i className="bi bi-plus-lg"></i> Adicionar Fornecedor
+                  </button>
+                </div>
+            </div>
+            <div className='bg-white rounded-md shadow-md border'>
               {fornecedores.map(f => (
                 <div key={f.id} className="p-4 border-b last:border-0 flex justify-between items-center">
                   <div>
@@ -245,12 +250,18 @@ const Estoque = () => {
                 </div>
               ))}
             </div>
+            </div>
           )}
 
           {aba === "produtos" && (
             <div>
               <div>
-                AAAA
+                <div className='flex justify-between mb-2'>
+                  <h3 className="text-sm font-bold text-gray-600 uppercase mb-4">Protutos em Estoque</h3>
+                  <button onClick={() => setIsModalProduto(true)} className='flex items-center gap-2 p-2 px-4 text-xs text-white font-semibold bg-amber-600 rounded-md hover:bg-amber-700 shadow-sm'>
+                    <i className="bi bi-plus-lg"></i> Adicionar Produto
+                  </button>
+                </div>
               </div>
               {produtos.map(p => (
                 <div key={p.id} className="p-3 border-b last:border-0 flex justify-between items-center align-middle bg-amber-50 mb-2 rounded-md shadow-sm">

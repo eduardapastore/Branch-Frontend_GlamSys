@@ -130,7 +130,7 @@ const dispararWhatsApp = (cliente) => {
 
           {/* DASH DE CLIENTES */}
           <div className='flex justify-between gap-4 font-semibold text-amber-50'>
-            <div className='flex gap-4 bg-amber-700 p-3 text-xs rounded-md items-center shadow-md'>
+            <div className='flex gap-4 bg-slate-950 p-3 text-xs rounded-md items-center shadow-md'>
                 <i class="bi bi-people text-3xl"></i>
                 <div>
                   <p className='font-semibold'>Total de Clientes</p>
@@ -138,7 +138,7 @@ const dispararWhatsApp = (cliente) => {
                 </div>
             </div>
 
-            <div className='flex gap-4 bg-amber-700 p-3 text-xs rounded-md items-center shadow-md'>
+            <div className='flex gap-4 bg-slate-950 p-3 text-xs rounded-md items-center shadow-md'>
                 <i className="bi bi-person-add text-3xl"></i>
                 <div>
                   <p className='font-semibold'>Clientes Novos no Mês</p>
@@ -146,7 +146,7 @@ const dispararWhatsApp = (cliente) => {
                 </div>
             </div>
 
-            <div className='flex gap-4 bg-amber-700 p-3 text-xs rounded-md items-center shadow-md'>
+            <div className='flex gap-4 bg-slate-950 p-3 text-xs rounded-md items-center shadow-md'>
                 <i class="bi bi-cake2 text-3xl"></i>
                 <div>
                   <p className='font-semibold'>Aniversariantes do Dia</p>
@@ -154,7 +154,7 @@ const dispararWhatsApp = (cliente) => {
                 </div>
             </div>
 
-            <div className='flex gap-4 bg-amber-700 p-3 text-xs rounded-md items-center shadow-md'>
+            <div className='flex gap-4 bg-slate-950 p-3 text-xs rounded-md items-center shadow-md'>
                 <i class="bi bi-bag-heart text-3xl"></i>
                 <div>
                   <p className='font-semibold'>Serviço Mais Contratado</p>

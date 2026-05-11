@@ -133,7 +133,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to='/colaboradores/folha' className="text-gray-500 flex gap-2 hover:text-black text-base py-1">
+                  <Link to='/folhadepagamento' className="text-gray-500 flex gap-2 hover:text-black text-base py-1">
                     <i className="bi bi-file-earmark-medical"></i> Folha de Pagamento
                   </Link>
                 </li>
